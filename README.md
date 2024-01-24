@@ -45,7 +45,7 @@ REPOSITORY                       TAG            IMAGE ID       CREATED        SI
 alexmbarbosa/flask-request       10.0           6a96582e9ffa   1 hours ago    91.8MB
 ```
 
-- In this case, I am using the same docker that I have pushed to my docker hub repository already with this **[flask-request image](https://hub.docker.com/repository/docker/alexmbarbosa/flask-request/general)**. Feel free to use any name for your tag/image.
+- In this case, I am using the same docker tag/name that I have pushed to my docker hub repository already with this **[flask-request image](https://hub.docker.com/repository/docker/alexmbarbosa/flask-request/general)**. Feel free to use any name for your tag/image.
 
 ## Use cases (scenarios)
 
