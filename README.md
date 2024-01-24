@@ -97,7 +97,6 @@ Have fun!
 - https://hub.docker.com/repository/docker/alexmbarbosa/flask-request
 - https://docs.docker.com/engine/reference/builder/
 - https://docs.docker.com/samples/flask/
-- https://tedboy.github.io/flask/index.html
 - https://locust.io/
 - https://docs.locust.io/en/stable/running-in-docker.html
 
