@@ -13,8 +13,9 @@ This is a Flask application that serves as a Request Counter API. It includes a 
 
 ## Dependencies
 
-- Container Engine (Docker, ContainerD, Podman etc)
 - git
+- Container Engine (Docker, ContainerD, Podman etc)
+- docker-compose (optional)
 
 ## Getting Started
 
