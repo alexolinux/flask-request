@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flask-Requester - Request Counter API</title>
+  <style>
+    .health-status-green {
+      color: green;
+    }
+
+    .health-status-red {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+    <h1>Flask-Requester API</h1>
+    <h2>App Revision: 10.0</h2>
+    <h3>Request Count: {{ count }}</h3>
+
+    <p><b class="{% if health_status == 'OK' %}health-status-green{% else %}health-status-red{% endif %}">Health Status: {{ health_status }}</b></p>
+
+    <p style=" position: absolute; bottom: 0; left: 0; width: 100%; text-align: center;">
+        <a href="https://github.com/alexolinux">Author: alexolinux</a>
+    </p>
+</body>
+</html>
+

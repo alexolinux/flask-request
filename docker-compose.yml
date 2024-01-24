@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  flask-request:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: flask-request:10.0
+    ports:
+      - "5000:5000"
+
+  locust:
+    image: locustio/locust:latest
+    command: -f /locust/locustfile.py
+    ports:
+      - "8089:8089"
+    volumes:
+      - ./scripts:/locust
