@@ -75,6 +75,8 @@ Open your `locust` page accessing http://localhost:8089 (or you local IP address
 
 ![locust](./img/locust.png)
 
+Locust Docs: https://docs.locust.io/en/stable/quickstart.html
+
 ### Extra-Option
 
 Additionally, I am providing a `docker-compose.yml` simplifying the deployment of docker containers.
