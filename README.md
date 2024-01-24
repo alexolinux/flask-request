@@ -48,9 +48,9 @@ alexmbarbosa/flask-request       10.0           6a96582e9ffa   1 hours ago    91
 
 ## Use cases (scenarios)
 
-How about simulating a load test of requests?
+How about simulating a few workload test requests?
 
-It is possible using an useful python tool called [Locust](https://locust.io/). For this, let's use our `flask-request` and the official `locust` docker image (Access ***[Locust on Docker](https://docs.locust.io/en/stable/running-in-docker.html)*** for more details).
+It is possible to use a useful Python tool called [Locust](https://locust.io/). For this, let's use our `flask-request` and the official `locust` docker image (Access ***[Locust on Docker](https://docs.locust.io/en/stable/running-in-docker.html)*** for more details).
 
 1. Spin Up `flask-request` container:
 
