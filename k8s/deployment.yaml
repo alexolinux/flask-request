@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-request
+  namespace: flask-request
+  labels:
+    app: flask-request
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flask-request
+  template:
+    metadata:
+      labels:
+        app: flask-request
+    spec:
+      containers:
+      - name: flask-request
+        image: flask-request:10.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
