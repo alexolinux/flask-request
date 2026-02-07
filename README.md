@@ -78,6 +78,79 @@ Open your `locust` page accessing http://localhost:8089 (or you local IP address
 
 Locust Docs: https://docs.locust.io/en/stable/quickstart.html
 
+### Kubernetes (K8s) Deployment
+
+The project is also ready to be deployed on a Kubernetes cluster. It uses a dedicated namespace `flask-request` for isolation.
+
+#### Prerequisites
+
+- `kubectl`
+- A Kubernetes cluster (e.g., k3d, Minikube, or a managed service like GKE/EKS)
+
+#### 1. Build and Import the Image
+
+If you are using **k3d**, you need to build the image locally and import it into the cluster:
+
+```shell
+# Build the image
+docker build -t flask-request:10.0 .
+
+# Import into k3d (replace 'klab' with your cluster name)
+k3d image import flask-request:10.0 -c klab
+```
+
+#### 2. Deploy to Kubernetes
+
+Deploy all manifests using `kubectl`:
+
+```shell
+kubectl apply -f k8s/
+```
+
+This will create:
+- A `Namespace`: `flask-request`
+- A `Deployment`: 3 replicas of the Flask app
+- A `Service`: `flask-request` (ClusterIP)
+- A `ConfigMap`: `locust-scripts`
+- A `Deployment`: `locust` (1 replica)
+- A `Service`: `locust` (ClusterIP)
+- A `HorizontalPodAutoscaler`: `flask-request-hpa` (Scales based on CPU/Memory)
+
+#### 3. Horizontal Pod Autoscaling (HPA)
+
+The application includes an HPA to handle traffic spikes.
+- **Criteria**: Scales up if CPU or Memory utilization exceeds 90%.
+- **Replicas**: Min 2, Max 10.
+
+To check the HPA status:
+```shell
+kubectl -n flask-request get hpa
+```
+
+#### 4. Verify the Deployment
+
+```shell
+kubectl -n flask-request get all
+```
+
+#### 4. Access and Test
+
+To access the application and Locust UI from your local machine, use port-forwarding:
+
+**Access the Flask App:**
+```shell
+kubectl port-forward svc/flask-request 8080:80 -n flask-request
+```
+Then visit: http://localhost:8080
+
+**Access the Locust UI:**
+```shell
+kubectl port-forward svc/locust 8089:8089 -n flask-request
+```
+Then visit: http://localhost:8089
+
+In the Locust UI, you can start a load test by specifying the number of users and spawn rate. The host is already configured as `http://flask-request` inside the cluster.
+
 ### Extra-Option
 
 Additionally, I am providing a `docker-compose.yml` simplifying the deployment of docker containers.
