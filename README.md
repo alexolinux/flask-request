@@ -109,7 +109,7 @@ kubectl apply -f k8s/
 
 This will create:
 - A `Namespace`: `flask-request`
-- A `Deployment`: 3 replicas of the Flask app
+- A `Deployment`: 2 replicas of the Flask app
 - A `Service`: `flask-request` (ClusterIP)
 - A `ConfigMap`: `locust-scripts`
 - A `Deployment`: `locust` (1 replica)
@@ -119,7 +119,7 @@ This will create:
 #### 3. Horizontal Pod Autoscaling (HPA)
 
 The application includes an HPA to handle traffic spikes.
-- **Criteria**: Scales up if CPU or Memory utilization exceeds 90%.
+- **Criteria**: Scales up if CPU or Memory utilization exceeds 80%.
 - **Replicas**: Min 2, Max 10.
 
 To check the HPA status:
